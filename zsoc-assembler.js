@@ -23,6 +23,14 @@ const DS   = 0x0004;
 const DL   = 0x0002;
 const DO   = 0x0001;
 
+const I0 = 0x00;
+const I1 = 0x20;
+const I2 = 0x10;
+
+const O0 = 0x00;
+const O1 = 0x80;
+const O2 = 0x40;
+
 const BA = B0|B1|B2|B3;
 
 let clock = 0x0;
@@ -36,7 +44,7 @@ const e2prom = (code, clock) => {
     .split(',')
     .reduce((a, b) => a = a | eval(b), 0);
 
-  data = parseInt(data, 16);
+  data = parseInt(eval(data));
 
   let addr = `${bin(branch, 4)}${bin(clock, 4)}`;
   let mem = `${bin(cmd, 16)}${bin(data, 8)}`;
